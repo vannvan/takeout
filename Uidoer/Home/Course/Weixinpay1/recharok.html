@@ -1,0 +1,32 @@
+<include file="Public:header"/>
+<style>
+.panel-primary{border: none;background: #ededed;box-shadow: #ccc 2px 2px 3px;}
+.panel-body{padding: 0px;border: none;}
+.pay-lb{margin: 0; padding:10px 10px; border-bottom: 1px #ccc solid;}
+.pay-lb:last-child{border: none;}
+.pay-lb b{margin-left: 10px;float: right;}
+.pay-lb:first-child b{color: #333;}
+</style>
+<body>
+	<include file="Public:back"/>
+	<div class="container">
+		<div class="panel panel-primary" style="margin-top: 10px;">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">充值成功</h3>
+		  </div>
+		  <div class="panel-body">
+		    <p class="pay-lb">订单编号：<b>{$data.ordnum}</b></p>
+		    <p class="pay-lb">订单名称：<b>有爱Doer余额充值</b></p>
+		    <p class="pay-lb">付款金额：<b>&yen;{$data.paymoney|format}</b></p>
+		    <p class="pay-lb">付款时间：<b>{$data.addtime|date="Y-m-d H:i:s",###}</b></p>
+		    <p class="pay-lb" onclick='window.location.href="__MODULE__/User/wallet/id/{$data.userid}"'>&nbsp;<b class="view-order" style="color:#2f8c00">查看我的钱包</b></p>
+		 </div>
+		</div>
+	</div>
+<script type="text/javascript">
+layer.open({
+  style: 'border:none; background-color:#ff4351; color:#fff;',
+  content:"恭喜您成功充值<p><h4>{$data.paymoney|format}元</h4><p>您已获得本月三次免派送费的机会"
+})
+</script>
+<include file="Public:footnav"/>

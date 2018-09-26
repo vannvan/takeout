@@ -1,0 +1,50 @@
+<extend name="Main:index"/>
+<block name="right">
+<style type="text/css">
+  a:hover{text-decoration: none;}
+</style>
+<div class="UserPosition">餐厅管理</div>
+<div class="rightmain">
+<table class="table table-striped table-hover ">
+  <a href="__URL__/add" class="btn btn-success">添加餐厅+</a>
+  <a href="__MODULE__/Merchants/add1" class="btn btn-primary" style="margin-left:20px;">添加店铺+</a>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>名称</th>
+      <th>类名(图片)</th>
+      <th>发布状态</th>
+      <th>发布日期</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<volist name='rows' id='row'>
+    <tr>
+      <td>{$row.id}</td>
+      <td><a href="__MODULE__/Merchants/index/id/{$row.id}"><b style="color:#008A00">{$row.name}</b></a></td>
+      <td><a href="__MODULE__/Merchants/index/id/{$row.id}"><i class="{$row.class}" style="font-size:28px;"></i></a></td>
+      <td>{$row.status|getstatus}</td>  <!--  方法在function内 --> 
+      <td>{$row.addtime|date="Y-m-d",###}</td>
+      <td>
+        <if condition="$row.status eq 0">
+        <span><a href="__URL__/enabled/id/{$row.id}"><i class="fa fa-cloud-upload enabled" data-toggle="tooltip" data-placement="bottom" title="发布"></i></a></span>
+        <else/>
+        <span><a href="__URL__/disabled/id/{$row.id}"><i class="fa fa-cloud-download disabled" data-toggle="tooltip" data-placement="bottom" data-id={$row.id} title="撤回"></i></span>
+        </if>
+        <span><a href="__URL__/mod/id/{$row.id}"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="bottom" title="编辑"></i></a></span>
+        <span><a><i class="fa fa-trash delete" data-toggle="tooltip" data-placement="bottom" data-id={$row.id} title="删除"></i></a></span>
+      </td>
+    </tr>
+   </volist>
+    
+  </tbody>
+</table>
+
+<script type="text/javascript">
+  var scope={
+    'deleteurl':'__URL__/del',
+  }
+</script>
+<load file="__JS__/de_dis_en.js"/>
+</block>

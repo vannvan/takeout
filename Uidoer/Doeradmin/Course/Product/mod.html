@@ -1,0 +1,54 @@
+<extend name='Main:index'/>
+<block name="right">
+<load file="__CSS__/add.css"/>
+<div class="UserPosition">更改产品信息</div>
+	<div class="rightmain">
+	<form class="form-horizontal" action="__URL__/update" method="post" onsubmit="return validateForm()" enctype="multipart/form-data"> 
+	  <fieldset>
+	  <!-- title -->
+	    <div class="form-group col-lg-12">
+	      <label class="lb">商品名称</label>
+	      <div class="col-lg-6">
+	        <input type="text" class="form-control" placeholder="20字以内" required="required"  maxlength="20" value="{$data.name}" name="name">
+	        <input type="hidden" value="{$data.pid}" name="pid">
+	        <input type="hidden" value="{$data.id}" name="id">
+	      </div>
+	    </div>
+	 <!-- 包含内容 -->
+	 <div class="form-group col-lg-12">
+		 <label class="lb">包含内容</label>
+		 <div class="col-lg-6">
+		 <input type="text" class="form-control" placeholder="简要描述餐品含内容" required="required"  maxlength="30" value="{$data.content}" name="content">
+		 </div>
+     </div>
+	    <div class="form-group col-lg-12">
+	      <label class="lb">价格</label>
+	      <div class="col-lg-6">
+	        <input type="number" class="form-control" placeholder="" required="required"  maxlength="5" value="{$data.price}" name="price" min="0.0" step="0.1">
+	      </div>
+	    </div>
+	  <!-- 是否推荐 -->
+	    <div class="form-group col-lg-12">
+	      <label class="lb">是否显示</label>
+	      <div class="col-lg-6">
+		      <div class="radio">
+	          <label>
+	            <input type="radio" name="status" value="1" checked="">是
+	          </label>
+	          </div>
+		      <div class="radio">
+		      <label>
+		        <input type="radio" name="status" value="0">否
+		      </label>
+		      </div>
+	      </div>
+	    </div>
+	       </div>
+	    <div class="col-lg-10 col-lg-offset-1">
+        <button type="submit" class="btn btn-warning">确认更改</button>
+        <a href="javascript:history.go(-1);" class="btn btn-primary">返回</a>
+      	</div>
+	    </fieldset>
+	</form>
+	</div>
+</block>

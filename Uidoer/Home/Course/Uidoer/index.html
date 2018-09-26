@@ -1,0 +1,91 @@
+<include file="Public:header"/>
+<load file="__PUBLIC__/ali-icon/iconfont.css"/>
+<style>
+.ctlist{border: solid #ccc 1px;margin-top: -1px;margin-left: -1px;text-align: center;}<!--解决border重叠-->
+.row a{color: #333333;}
+.iconfont{font-size:50px;color: #333;}
+.name{color: #333;font-size: 14px;font-weight: bolder;}
+.Restaurant{cursor: pointer;}
+.Restaurant:hover{background: #C8C8C8;}}
+</style>
+<body>
+<!--自动轮播-->
+<script>
+ $(document).ready(function(){ 
+ $('#myCarousel').carousel({interval:4000});
+ }); 
+</script>
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+	  <ol class="carousel-indicators">
+	    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+	    <volist id="li" name="Banner">
+	    	<li data-target="#myCarousel" data-slide-to="{$li.id}"></li>
+	    </volist>
+	  </ol>
+	  <div class="carousel-inner" id="banner">
+	  	{//输出第一张图}
+	  	<div class="item active">
+		      <a href="#"><img src="__ROOT__/{$first}" alt="第一张" width="100%"></a>
+		    </div>
+	    <volist id="img" name="Banner">
+	    	<div class="item">
+		      <a href="{$img.href}"><img src="__ROOT__/{$img.image}" alt="" width="100%"></a>
+		    </div>
+	    </volist>
+	  </div>
+	  <!-- Controls -->  
+          <a id="carleft" class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">  
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>  
+          </a>  
+          <a id="carright" class="right carousel-control" href="#myCarousel" role="button" data-slide="next">  
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>  
+          </a>  
+	</div>
+	<!--banner end-->
+<!--横划手势-->
+<script>  
+	var myTouch = util.toucher(document.getElementById('myCarousel'));  
+	myTouch.on('swipeLeft',function(e){  
+	    $('#carright').click();  
+	}).on('swipeRight',function(e){  
+	    $('#carleft').click();  
+	});    
+</script> 	
+	<div class="container">
+		<div class="Uidoer-label">
+		  <span>西译美食</span>
+		</div>
+		<!--restaurant begin-->
+	    <div class="row" style="padding-left: 2px;margin: 1px;">
+	    	<volist id="res" name="Restaurant">
+		    	<div class="col-sm-4 ctlist col-lg-2 col-md-4 col-xs-4 Restaurant" onclick='window.location="__MODULE__/Canteen/index/id/{$res.id}"'>
+		            	<i class="{$res.class}"></i>
+		            	<div class="name">{$res.name}</div>
+		        </div>
+	    	</volist>
+	        <div class="col-sm-4 ctlist col-lg-2 col-md-4 col-xs-4" >
+	            	<i class="icon iconfont icon-gengduo"></i>
+	            	<div class="name">待扩展区</div>
+	        </div>
+	        </a>
+	    </div>
+	    <!--restaurant end-->
+	    <!--warning begin-->
+	    <div class="Uidoer-label" style="background: #D58512;">
+			  <span>有爱提醒</span>
+		</div>
+		<div class="row waring-content" style="padding: 0;margin: 0;min-height: 300px;">
+			{$Notice}
+		</div>
+		<!--warning end-->
+		<!-- <a href="__MODULE__/Weixinpay/pay">支付</a> -->
+	</div>
+
+		<!--footnav begin-->
+<include file="Public:footnav"/>
+	
+
+
+
+	
+   

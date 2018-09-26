@@ -1,0 +1,39 @@
+<include file="Public:header"/>
+<style type="text/css">
+.container{width: 100%;margin: 0;padding: 0;background: #ededed;}
+.list-group{border-radius: 0;background: #fff;}
+.list-group-item{width: 100%;height: auto;float: left;}
+.list-group-item:first-child{border-radius: 0;padding: 0;}
+.port{width: 80px;height:100%;background: #008000;}
+.port img{height: 70px;width: 70px;margin: 5px;float: left;}
+.name-sex{width: 120px;height: 100%;float: left;margin-top: 20px;margin-left: 20px;}
+.user-info{color: #6B6B6B;}
+</style>
+<body>
+<include file="Public:back"/>
+<div class="container">
+	<div class="list-group">
+	 <li class="list-group-item">
+	 	<div class="port"><img src="{$data['headimgurl']}" style="height: 70px;width: 70px;"></div>
+	 	<div class="name-sex">
+	 		{$data.dormitory|getdormitory}的{$data.sex|getsex}
+			<p><b>{$data['nickname']}</b>
+	 	</div>
+	 </li>
+	 <li class="list-group-item">
+	 	<b>我的餐厅<span class="pull-right user-info">{$data.resname}</span></b>
+	 </li>
+	 <li class="list-group-item">
+	 	<b>我的宿舍<span class="pull-right user-info">{$data.dormitory}</span></b>
+	 </li>
+	 <li class="list-group-item">
+	 	<b>Doer爱称<span class="pull-right user-info">{$data.name}</span></b>
+	 </li>
+	 <li class="list-group-item">
+	 	<b>Phone<span class="pull-right user-info">{$data.mobile}</span></b>
+	 </li>
+	<li class="list-group-item" onclick='window.location.href="__URL__/changeinfo/id/{$data.id}"'>
+	 	<b>更多</b>
+	 </li>
+	</div>
+</div>

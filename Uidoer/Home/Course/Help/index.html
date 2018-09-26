@@ -1,0 +1,24 @@
+<include file="Public:header"/>
+<style type="text/css">
+.container{margin-bottom: 50px;}
+.list-title{height: 40px;width: 100%;background: #337ab7;margin-top: 10px;border-radius: 4px 4px 0 0;line-height: 40px;padding-left: 15px;color:#fff ;}
+.list-group-item:first-child{border-radius: 0;}
+.list-group-item{width: 100%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.list-group-item:hover{background: #ccc;}
+</style>
+<body>
+<include file="Public:back"/>
+<div class="container">
+	<div class="list-title">
+		<b>常见问题</b>
+	</div>
+	<ul class="list-group">
+	<volist name="data" id="data">
+		 <li class="list-group-item" onclick='window.location="__URL__/methods/id/{$data.id}"'>
+	    <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+	   {$data.title}
+	  </li>
+	</volist>
+	</ul>
+</div>
+<include file="Public:footnav"/>

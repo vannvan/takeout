@@ -1,0 +1,36 @@
+<include file="Public:header"/>
+<include file="Public:back"/>
+<style type="text/css">
+.btn{width: 100%;margin-top: 10px;background: #ff4351;color: #fff;}
+.btn:hover{background: #ff4350;}
+.btn:hover,.btn:focus,.btn:after{background: #ff4350;}
+.warning{width: 100%;height: 100px;margin-top: 20px;}
+</style>
+	<div class="form-group" style="margin:15px 5px auto 5px;">
+      <label class="control-label">请保证您的余额大于10元</label>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">$</div>
+          <input type="number" class="form-control" placeholder="请输入提现金额" step="0.01" name="money">
+          <div class="input-group-addon">.00</div>
+        </div>
+        <button class="btn" type="button" id="takeout" data-id="{$userid}">确认提现</button>
+      </div>
+    </div>
+    <div class="panel panel-warning" style="margin:0 5px;">
+      <div class="panel-heading">
+        <h3 class="panel-title">温馨提示</h3>
+      </div>
+      <div class="panel-body">
+        <p>1：提现账户默认是您绑定的支付宝账户，请确认账户正常；</p>
+        <p>2：提现会在一个工作日内转入您的账户。</p>
+      </div>
+    </div>   
+<script type="text/javascript">
+  var takeouturl="__URL__/dotakeout";
+  var backurl="__URL__/wallet/id/{$userid}";
+</script>
+<load href="__JS__/takeout.js"/> 
+</body>
+</html>
+   

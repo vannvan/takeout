@@ -1,0 +1,57 @@
+<include file="Public:header"/>
+<body>
+<include file="Public:back"/>
+<style type="text/css">
+.input-group-addon{border-radius: 0;background: #fff;border:0;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);}
+.input-group {margin-bottom: 10px;box-shadow: #ccc 0px 1px 1px;width: 100%;}
+.form-control{border-radius: 0;border: 0;outline: none;border-left: 0;}
+.btn{width: 100px;margin-right: 10px;font-weight: bold;}
+/*#setInfo-btn{display: none;}*/
+</style>
+<script type="text/javascript">
+$(function(){
+    var sex={$data.sex};
+    if(sex==1){
+      $("#sex").find("option[value ='1']").attr("selected","selected");
+    }else{
+      $("#sex").find("option[value ='2']").attr("selected","selected");
+    }
+})
+</script>
+<form class="form-horizontal" style="margin-top: 10px;" id="userinfo">
+<fieldset>
+	<div class="input-group">
+          <div class="input-group-addon" style="letter-spacing: 0.5em">性别</div>
+          <select class="form-control" id="sex" name="sex">
+		          <option value="1">男</option>
+		          <option value="2">女</option>
+		      </select>
+    </div>
+    <div class="input-group">
+          <div class="input-group-addon" style="letter-spacing: 0.5em">昵称</div>
+          <input type="text" class="form-control" id="mobile" value="{$data.nickname}" name="nickname">
+    </div>
+    <!-- <div class="input-group">
+          <div class="input-group-addon">手机号</div>
+          <input type="text" class="form-control" id="mobile" value="{$data.mobile}" name="mobile">
+    </div> -->
+    <div class="input-group">
+          <div class="input-group-addon">支付宝</div>
+          <input type="text" class="form-control" id="mobile" value="{$data.alipay}" name="alipay">
+    </div>
+    <input type="hidden" value="{$data.id}" name="id"/>
+    <button type="button" class="btn pull-right" id="setInfo">确认</button>{//一定要加type，在这里被难了两个晚上，妈蛋}
+</fieldset>
+</form>
+<script type="text/javascript">
+ 	$("#setInfo").hide();
+  // 当点击input或者select时显示确认按钮
+ 	$("input,#sex").focus(function(){
+ 		$("#setInfo").show(500);
+ });
+  var mod="__URL__/modinfo";
+  var backurl="__URL__/index";
+</script>
+<load file="__JS__/UpdateInfo.js"/>
+</body>
+</html>

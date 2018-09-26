@@ -1,0 +1,38 @@
+<extend name="Main:index"/>
+<block name="right">
+<load href="__JS__/check.js" />
+<div class="UserPosition">反馈信息查看</div>
+ <div class="rightmain">
+ <a class="btn btn-success" href="__URL__/reply/id/{$data.id}">回复反馈-></a>
+ <a href="javascript:history.go(-1);" class="btn btn-primary" style="margin-left:20px;">返回</a>
+ 	{//反馈信息}
+	<div style="width:600px;margin-top:30px;">
+		<div class="panel panel-primary">
+		    <div class="panel-heading">
+		        <h3 class="panel-title">反馈内容</h3>
+		    </div>
+		    <div class="panel-body">
+		       {$data.content}
+		    </div>
+		    <div class="panel-footer">{$data.addtime|date="Y-m-d H:i:s",###}</div>
+		    <div class="panel-footer"><span style="color:#f00;">回复状态：{$data.restatus|getrestatus}{// 方法在function内}</span></div>
+	</div>
+
+	{//回复信息}
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h3 class="panel-title">回复内容</h3>
+			</div>
+			<div class="panel-body">
+				{$data2.content|default="暂时还没有回复内容"}
+			</div>
+			<if condition="$data2.addtime  eq null">{//判断回复时间是否为空}
+			<div class="panel-footer">回复时间：无</div>
+			<else/>
+			<div class="panel-footer">回复时间：{$data2.addtime|date="Y-m-d H:i:s",###}</div>
+			</if>
+		</div>
+	</div>
+  </div>
+ </div>
+</block>

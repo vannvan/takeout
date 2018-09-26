@@ -1,0 +1,31 @@
+<include file="Public:header"/>
+<style>
+.container{height: auto;}
+.food-list{background: #ededed;height: 70px;margin-top: 10px;box-shadow: #ccc 2px 2px 3px;cursor: pointer;}
+.tips{height: 50px;width: 50px;margin-top: 10px;}
+.food-title,.food-info{width: 90%;height:auto;margin-left:10px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.food-title{line-height: 18px;}
+.food-info{font-size: 9px;}
+</style>
+<body>
+	<include file="Public:back"/>
+<div class="container">
+	<volist name="rows" id="row">
+		<div class="food-list" onclick='window.location="__ROOT__/Canteen/order/id/{$row.id}";'>
+	    		<div class="col-lg-1 col-md-1 col-xs-2 col-sm-2 food-list-item">
+	    			<!--图片尺寸50*50-->
+	    			<img src="__ROOT__/{$labelimg}" class="tips" />
+	    		</div>
+	    		<div class="col-lg-10 col-md-10 col-xs-8 col-sm-10 -list-item">
+	    			<h5 class="food-title">{$row.name}</h5>
+	    			<p class="food-info">{$row.content}</p>
+	    		</div>
+	    		<div class="col-lg-1 col-md-1 col-xs-2 col-sm-2 food-list-item">
+	    			<span class="glyphicon glyphicon-chevron-right" style="line-height:70px;"></span>
+	    		</div>
+		</div>
+	</volist>
+	<div class="pages">{$page}</div>  	 	
+</div>
+<include file="Public:footnav"/>
+

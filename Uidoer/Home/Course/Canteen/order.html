@@ -1,0 +1,71 @@
+<include file="Public:header"/>
+<load file="__PUBLIC__/bs/js/bootstrap-switch.min.js"/>
+<load file="__PUBLIC__/bs/css/bootstrap-switch.min.css"/>
+<load file="__JS__/indexjs.js"/>
+<style>
+.list-group{margin-top: 10px; padding: 10px;padding-bottom: 25px; background: #ededed;box-shadow: #ccc 2px 2px 3px;}
+.sdddq{font-size: 18px;height: 38px;width: 120px;background: #ededed;}
+#textArea{margin-top: 10px;resize: none;}
+</style>
+<body>
+	<include file="Public:back"/>
+	<div class="container" style="margin-bottom: 50px;">
+		{//如果该店有提示内容则显示，如果没有则不显示}
+		<if condition="$MerchantsData.prostatus eq 0"><else/>
+			<div class="panel panel-primary" style="margin-top: 10px;">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">友情提示</h3>
+			  </div>
+			  <div class="panel-body">
+			   	<div>{$MerchantsData.prompt}</div>	    
+			  </div>
+		</div>
+		</if>
+		<div class="list-group">
+			<form class="form-horizontal" id="order_form">
+			    <p>订单编号：<input type="text" value="{$data.ordnum}" style="border: none;background: #ededed;width:auto" readonly="readonly" name="ordnum"></p>
+			    <p>商品名称：<input type="text" value="{$data.name}" style="border: none;background: #ededed;width:auto" readonly="readonly" name="proname"></p>
+			    <p>商品价格：<input type="text" value="{$data.price|format1}" style="border: none;background: #ededed;width:38px" readonly="readonly" name="price">元</p>
+			    <if condition="$data['resid'] neq $data['UserResId']">
+			    	<p>派送费用：<input type="text" value="2.00" style="border: none;background: #ededed;width:38px" readonly="readonly" name="sendprice">元</p>
+			    <else/>
+			    	<p>派送费用：<input type="text" value="1.00" style="border: none;background: #ededed;width:38px" readonly="readonly" name="sendprice">元</p>
+			    </if>
+			    <label class="control-label" for="push">加钱速达（1元）</label>  
+				  <div class="switch" id="switch" style="height:30px;">  
+					<input id="push" type="checkbox"/>
+					<input id="additional" type="hidden" value="" name="quiksend"/>
+				  </div>  
+			    <label class="control-label" style="margin-top:5px">*附加：加卤蛋等附加品的价格，默认无</label>
+			      	<input class="sdddq" id="inp" name="additional">
+			    	<textarea class="form-control" rows="3" id="textArea" placeholder="请备注您的特殊需求（如少辣椒），未备注产生的纠纷由订餐方承担承担。" name="note"></textarea>
+			    	<input type="hidden" value="{$MerchantsData.name}" name="merchantsname">
+			    	<input type="hidden" value="{$data.resid}" name="resid">
+			    	<button type="button" class="btn btn-success" style="margin-top: 10px;" id="Order_btn">提交订单</button>
+		    </form>    
+		</div>
+	</div>
+<script>
+	$(document).ready(function(){  
+    $("#push").bootstrapSwitch({  
+        onText:'加1元',  
+        offText:'不着急'  
+    });  
+});  
+	$(document).ready(function(){
+	$(".bootstrap-switch-container").attr('id',"switchbox");//给已知class属性加id
+	$("#additional").val("0");//默认状态下为0
+	$(".bootstrap-switch-handle-off").click(function(){
+		$("#additional").val("1");//当off被点击
+	});
+	$(".bootstrap-switch-handle-on").click(function(){
+		$("#additional").val("0");//当on被点击
+	});
+	});
+</script>
+<script type="text/javascript">
+	var createurl="__MODULE__/Order/create";
+	var payurl="__URL__/pre_pay";
+</script>
+<load file="__JS__/create_order.js"/>
+<include file="Public:footnav"/>

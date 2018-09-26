@@ -1,0 +1,109 @@
+<include file="Public:header"/>
+<load file="//at.alicdn.com/t/font_449328_6ye9m0v7utz0vn29.css"/>
+<style>
+.container{padding: 0;margin: 0;width: 100%;}
+.user-info-basic{height: 80px;width: 100%;background: url(__IMG__/bg.jpg);margin: 0;padding: 0;}<!--背景图片需要替换-->
+.user-port{height: 80px;width: 25%;float: left;}
+.user-port img{height: 70px;width: 70px;margin: 5px 5px 5px 10px;float: left;}
+.user-port img:hover{border-radius: 5px;}
+.user-name{float: left; height: 80px; width:40%;color: #fff;padding-left: 20px;padding-top: 20px;font-size: 12px;}
+.user-integral{width: 20%;height: 80px;float: left;line-height: 75px;}
+.user-qiandao{width: 15%;height: 80px;float: left;line-height: 80px;}
+.user-center{float: left;width: 100%;height: auto;}
+.list-group-item{padding: 12px;}
+.icon{font-size: 18px;margin-right: 10px;}
+</style>
+<boay>
+<div class="container">
+	<div class="user-info-basic">
+		<div class="user-port">
+			<a href="{:U('User/userinfo')}"><img src="{$data['headimgurl']}"></a>
+		</div>
+		<div class="user-name" onclick='window.location="__URL__/userinfo"'>
+		  {//查询姓名信息是否存在，不存在引导其绑定信息}
+		  <if condition="$data.name eq null">
+		  {$data.dormitory|getdormitory}
+		  <script type="text/javascript">
+		  	layer.open({
+			    content: '您的信息不完善，要去完善信息吗？'
+			    ,btn: ['现在去', '再瞧瞧']
+			    ,yes: function(index){
+			      window.location.href='__ROOT__/User/setinfo';
+			      layer.close(index);
+			    }
+			  });
+		  </script>
+		  <else/>{$data.dormitory|getdormitory}
+		  </if>
+			的{$data.sex|getsex}
+			<p><b style="font-size:14px;line-height:38px;">{$data['nickname']}</b>
+		</div>
+		<div class="user-qiandao">
+			<i class="icon iconfont icon-qiandao" style="color: #fff;font-size: 30px;margin-left: 20px;cursor:pointer;" data-id="{$data.id}" id="User-Sign"></i><!--签到后字体颜色改为#000-->
+		</div>
+		<div class="user-integral">
+			<i class="icon iconfont icon-jifen1"  style="color: #fff;font-size: 14px;margin-left: 20px;"></i>
+			<span style="color:#CC1F00;margin-left:-10px;font-size:12px;">{$data.integral|default='0'}</span>
+		</div>
+	</div>
+	<div class="user-center">
+	<a href="__URL__/wallet/id/{$data.id}" class="list-group-item">
+		<i class="icon iconfont icon-qianbao"></i>
+		有爱钱包
+		<span class="glyphicon glyphicon-chevron-right pull-right"></span> 
+	</a>
+	<a href="__URL__/message/id/{$data.id}" class="list-group-item">
+		<i class="icon iconfont icon-xiaoxi"></i>
+		我的消息
+		<if condition="$new eq 1">
+		<span class="badge" style="color: #fff;background: #EB3C00;">new</span>
+		<else/>
+		<span class="glyphicon glyphicon-chevron-right pull-right"></span> 
+		</if>
+	</a>
+	<a href="{:U('Order/index')}" class="list-group-item">
+		<i class="icon iconfont icon-dingdan"></i>
+		我的订单
+		<if condition="$data.countorder neq 0">
+			<span class="badge" style="color: #fff;background: #2f8c00;">{$data.countorder}</span>
+		<else/>
+			<span class="glyphicon glyphicon-chevron-right pull-right"></span> 
+		</if>
+	</a>
+	<a href="{:U('Send/index')}" class="list-group-item">
+		<i class="icon iconfont icon-song"></i>
+		我的派送
+		<if condition="$data.countsend neq 0">
+			<span class="badge" style="color: #fff;background: #ff8500;">{$data.countsend}</span>
+		<else/>
+			<span class="glyphicon glyphicon-chevron-right pull-right"></span> 
+		</if>
+		
+	</a>
+	<!-- <a href="{:U('User/setinfo')}" class="list-group-item">
+		<i class="icon iconfont icon-shezhi"></i>
+		信息设置
+		<span class="glyphicon glyphicon-chevron-right pull-right"></span> 
+	</a> -->
+	<a href="{:U('Help/index')}" class="list-group-item">
+		<i class="icon iconfont icon-bangzhu"></i>
+		<span class="glyphicon glyphicon-chevron-right pull-right"></span> 
+		有爱攻略
+	</a>
+	<a href="{:U('User/feedback')}" class="list-group-item">
+		<i class="icon iconfont icon-fankui"></i>
+		反馈建议
+		<span class="glyphicon glyphicon-chevron-right pull-right"></span> 
+	</a>
+	<a href="{:U('About/index')}" class="list-group-item">
+		<i class="icon iconfont icon-guanyu"></i>
+		关于有爱
+		<span class="glyphicon glyphicon-chevron-right pull-right"></span> 
+	</a>
+	</div><!--usercenter end-->
+</div>
+<script type="text/javascript">
+	var signurl="__MODULE__/Sign/Signin"
+</script>
+<load file="__JS__/sign.js"/>
+<include file="Public:footnav"/>

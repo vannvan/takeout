@@ -1,0 +1,106 @@
+<extend name='Main:index'/>
+<block name="right">
+<load file="__CSS__/add.css"/>
+<div class="UserPosition">添加商铺</div>
+	<div class="rightmain">
+	<form class="form-horizontal" action="__URL__/create" method="post" onsubmit="return validateForm()" enctype="multipart/form-data"> 
+	  <fieldset>
+	  <!-- title -->
+	    <div class="form-group col-lg-12">
+	      <label class="lb">店铺名称</label>
+	      <div class="col-lg-6">
+	        <input type="text" class="form-control" placeholder="15字以内" required="required"  maxlength="15" name="name">
+	      </div>
+	    </div>
+	 <!-- 所属餐厅 -->
+	 <div class="form-group col-lg-12">
+		 <label class="lb">所属餐厅</label>
+		    	<div class="col-lg-6">
+		        <select class="form-control" name="pid">
+		          <option value="0">选择餐厅</option>
+		          <volist name="ctrows" id="vo">
+				     <option value="{$vo['id']}">{$vo['name']}</option>
+				  </volist>
+		        </select>
+		    	</div>
+		    </div>
+	  <!-- describe describe是mysql的关键字所以name少个e避免冲突-->
+		<div class="form-group col-lg-12">
+	      <label class="lb">店铺描述</label>
+	      <div class="col-lg-6">
+	      	<input type="text" class="form-control" placeholder="简要描述店铺主营内容" required="required"  maxlength="25" name="discrib">
+	      </div>
+	    </div>
+	  <!-- qq -->
+	    <div class="form-group col-lg-12">
+	      <label class="lb">店铺特色</label>
+	      <div class="col-lg-6">
+	        <input type="text" class="form-control" placeholder="主要印象" required="required"  maxlength="25" name="features">
+	      </div>
+	    </div>
+	  <!-- 主图 -->
+		<div class="form-group col-lg-12">
+		  <label class="lb">店铺主图</label>
+		  <div class="col-lg-6">
+		  	<input type="button" id="btn1" onclick="myfile1.click();" class="btn btn-success" value="上传图片">  
+			<input type="file" id="myfile1" onchange="input1.value=this.value" style="display:none" name="image" required="required"  accept="image/gif,image/jpeg" > 
+			<input type="text" id="input1" class="form-control" style="width:auto;float:left;margin-right:20px;"> 
+		  </div>
+		</div>
+		<!-- 小图 -->
+		<div class="form-group col-lg-12">
+		  <label class="lb">店铺小图</label>
+		  <div class="col-lg-6">
+		  	<input type="button" id="btn2" onclick="myfile2.click();" class="btn btn-success" value="上传图片">  
+			<input type="file" id="myfile2" onchange="input2.value=this.value" style="display:none" name="labelimg" required="required"  accept="image/gif,image/jpeg" > 
+			<input type="text" id="input2" class="form-control" style="width:auto;float:left;margin-right:20px;"> 
+		  </div>
+		</div>
+	  <!-- 是否推荐 -->
+	    <div class="form-group col-lg-12">
+	      <label class="lb">是否有提示</label>
+	      <div class="col-lg-6">
+		      <div class="radio">
+	          <label>
+	            <input type="radio" name="prostatus" value="1">有
+	          </label>
+	          </div>
+		      <div class="radio">
+		      <label>
+		        <input type="radio" name="prostatus" value="0" checked="">无
+		      </label>
+		      </div>
+	      </div>
+	    </div>
+	       </div>
+	  <!-- 提示内容prompt -->
+	    <div class="form-group col-lg-12" style="margin-left:-16px;">
+	      <label class="lb">提示内容</label>
+	      <div class="col-lg-6">
+	        <textarea class="form-control" id="textArea" placeholder="20-80字，保证精简介绍该产品服务范围！" name="prompt"></textarea>
+	      </div>
+	    </div>
+	  <!--当前是否显示-->
+	    <div class="form-group col-lg-12">
+	      <label class="lb">是否有附加品</label>
+	      <div class="col-lg-6">
+		      <div class="radio">
+	          <label>
+	            <input type="radio" name="additional" value="1">是
+	          </label>
+	          </div>
+		      <div class="radio">
+		      <label>
+		        <input type="radio" name="additional" value="0" checked="">否
+		      </label>
+		      </div>
+	      </div>
+	    </div>
+	    <div class="col-lg-10 col-lg-offset-1">
+        <button type="submit" class="btn btn-warning">确认添加</button>
+        <a href="javascript:history.go(-1);" class="btn btn-primary">返回</a>
+      	</div>
+	    </fieldset>
+	</form>
+	</div>
+</block>

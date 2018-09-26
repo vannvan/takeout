@@ -1,0 +1,76 @@
+<extend name='Main:index'/>
+<block name="right">
+<load href="__CSS__/add.css"/>
+<div class="UserPosition">更改管理员信息</div>
+	<div class="rightmain">
+	<form class="form-horizontal" action="__URL__/update" method="post" onsubmit="return validateForm()"> 
+	<input type="hidden" value="{$data.sysid}" name="sysid">
+	  <fieldset>
+	  <!-- title -->
+	    <div class="form-group col-lg-12">
+	      <label class="lb">管理员昵称</label>
+	      <div class="col-lg-6">
+	        <input type="text" class="form-control"  maxlength="15" name="sysname" value="{$data.sysname}">
+	      </div>
+	    </div>
+
+	  <!-- password-->
+		<div class="form-group col-lg-12">
+	      <label class="lb">管理员密码</label>
+	      <div class="col-lg-6">
+	      	<input type="password" class="form-control" name="password" value="{$data.password}">
+	      </div>
+	    </div>
+	  <!-- tel -->
+	    <div class="form-group col-lg-12">
+	      <label class="lb">联系电话</label>
+	      <div class="col-lg-6">
+	        <input type="text" class="form-control" maxlength="15" name="tel" value="{$data.tel}">
+	      </div>
+	    </div>
+	  <!-- 是否设为超级 -->
+	    <div class="form-group col-lg-12">
+	      <label class="lb">管理员级别</label>
+	      <div class="col-lg-6">
+		      <div class="radio">
+	          <label>
+	            <input type="radio" name="class" value="1">超级
+	          </label>
+	          </div>
+		      <div class="radio">
+		      <label>
+		        <input type="radio" name="class" value="0" checked="">普通
+		      </label>
+		      </div>
+	      </div>
+	    </div>
+	    <div class="col-lg-10 col-lg-offset-1">
+        <button type="submit" class="btn btn-warning">确认更改</button>
+        <a href="javascript:history.go(-1);" class="btn btn-primary">返回</a>
+      	</div>
+	    </fieldset>
+	</form>
+	</div>
+<script type="text/javascript">
+    function validateForm(){
+	  var txt = "昵称不能为空! ";
+	  var txt1 = "密码不能为空! ";
+	  var txt2 = "电话不能为空! ";
+	  var name=$("input[name='sysname']").val();
+	  var password=$("input[name='password']").val();
+	  var tel=$("input[name='tel']").val();
+	  if(name==""){
+	    dialog.error(txt);
+	    return false;
+	  };
+	  if(password==""){
+	    dialog.error(txt1);
+	    return false;
+	  };
+	  if(tel==""){
+	    dialog.error(txt2);
+	    return false;
+	  };
+}
+</script>
+</block>

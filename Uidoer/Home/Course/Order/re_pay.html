@@ -1,0 +1,43 @@
+<include file="Public:header"/>
+<style>
+.panel-primary{border: none;background: #ededed;box-shadow: #ccc 2px 2px 3px;}
+.panel-body{padding: 0px;border: none;}
+.pay-lb{margin: 0; padding:10px 10px; border-bottom: 1px #ccc solid;}
+.pay-lb:last-child{border: none;}
+.pay-lb b{color: #FF2200;margin-left: 10px;float: right;}
+.pay-lb:first-child b{color: #333;}
+.pay-box{margin: 0;padding: 0;width: 100%;height: 200px;}
+.pay-box-title{width: 100%;background: #3bbd00; font-size: 16px;padding: 10px 15px; border-top-right-radius: 3px;border-top-left-radius: 3px;color: #fff;}
+.pay-way{list-style: none;height: 70px;width: 50%;float: left;}
+.pay-way img{height: 60px;width:156px;margin-left: 10px;}
+.pay-way img:hover{border: 1px #f00 solid;}
+</style>
+<body>
+	<include file="Public:back"/>
+	<div class="container">
+		<div class="panel panel-primary" style="margin-top: 10px;">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">订单信息</h3>
+		  </div>
+		  <div class="panel-body">
+		    <p class="pay-lb">订单编号：<b>{$data.ordnum}</b></p>
+		    <p class="pay-lb">支付费用：<b>&yen;{$data.paymoney|format}</b> </p>
+		    <p class="pay-lb">专用余额：<b>&yen;0</b></p>
+		  </div>
+		</div>	
+	    <!--pay method-->
+	    <ul class="pay-box">
+	    	<h3 class="pay-box-title">支付方式</h3>
+	    	<li class="pay-way" onclick='window.location="__ROOT__/Weixinpay/pay/?out_trade_no={$data.ordnum}"'><img src="__IMG__/pay_we"></li>
+	    	<li class="pay-way" id="wallet-pay" data-id="{$data.id}"><img src="__IMG__/pay_ui"></li>
+	    	<!-- <li class="pay-way" onclick='window.location.href="__MODULE__/Weixinpay/pay/00000000221212"'><img src="__IMG__/pay_ali"></li> -->
+	    </ul>
+	</div>
+<include file="Public:footnav"/>
+<script type="text/javascript">
+	var walletpayurl="__MODULE__/walletpay/pay";
+	var notifyurl="__MODULE__/walletpay/notify/?id={$data.id}";
+</script>
+<load file="__JS__/walletpay.js"/>
+</body>
+</html>

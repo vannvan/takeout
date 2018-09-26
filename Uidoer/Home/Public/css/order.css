@@ -1,0 +1,21 @@
+.container{height: auto;}
+.order-sort{height: 40px;width: 100%;margin:0 ;margin-top: 10px;padding: 0;background: #337ab7;border-radius:4px 4px 0 0;}
+.order-sort a{float: left;list-style: none;height: 40px;width: 50%;border-right: 1px #ccc solid; line-height: 40px;text-align: center;color: #fff;font-weight: bolder;font-size: 14px;}
+.order-sort a:first-child{border-radius: 4px 0 0 0;}
+.order-sort a:last-child{border-right: none;border-radius: 0 4px 0 0;}
+.order-info{height: auto;width: 100%;margin-top: 10px; border: 1px solid #ccc;border-radius: 4px;box-shadow: #ccc 2px 2px 3px;}
+.order-info-title{height: 35px;width: 100%;border-bottom: 1px #ccc solid;}
+.order-info-body{}
+.order-info-basic{height: 60px;width: 100%;margin: 0;padding: 0;box-shadow: #ccc 0 1px 1px;cursor: pointer;float: left;}
+.order-info-basic:hover{background: #ccc;}
+.order-info-basic img{height: 50px;width:50px;margin: 5px;float: left;}
+.order-info-basic-name{line-height: 60px;margin-left: 20px;font-weight: bolder;max-width: 200px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+
+.order-operation{height: 60px;width:100%;margin: 0;padding: 0;clear: both;}
+.order-state-money{width: 45%;height: 60px;margin: 0;padding: 0;float: left;}
+.order-state-money>div{height: 30px;line-height: 30px;padding-left: 15px;}
+.Confirm-cancel{width: 55%;height: 60px;margin: 0;padding: 0;float: left;padding-top: 14px;}
+/*选中样式*/
+.active{background: #36aeeb;}
+/*订单操作按钮样式*/
+.order-btn{float: right;margin-right: 20px;}

@@ -1,0 +1,30 @@
+<include file="Public:header"/>
+<style>
+.container{width: 100%;margin: 0;padding: 0;margin-bottom: 20px;}
+.panel{margin-top: 10px;border-radius: 0;border: none;box-shadow: #ccc 2px 2px 3px;}
+.panel-heading{border-radius: 0;}
+.panel-title{width: 100%;}
+.panel-body p{font-size: 13px;}
+</style>
+<body>
+<include file="Public:back"/>
+<div class="container">
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">{$data.title}</h3>
+	  </div>
+	  <div class="panel-body">
+	      <p style="text-indent:2em;">{$data.content}
+	    <div style="font-weight: bolder;font-size: 12px;">来自：{$data.belong}</div>  	
+	    <div style="font-weight: bolder;font-size: 12px;">时间：{$data.addtime|date="Y-m-d H:i:s",###}</div>  	
+	    <b class="btn btn-danger pull-right" id="del" data-id="{$data.id}">删除消息</b>
+	  </div>
+	</div>
+</div>
+<script type="text/javascript">
+	var delurl="__URL__/delmessage";
+	var back="__URL__/index";
+</script>
+<load file="__JS__/del.js"/>
+</body>
+</html>

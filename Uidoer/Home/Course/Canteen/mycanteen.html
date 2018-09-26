@@ -1,0 +1,36 @@
+<include file="Public:header"/>
+<style>
+.container{height: auto;}
+.ct-list{height: 106px;width:100%;background: #ededed; margin-top:10px ; cursor: pointer;border-bottom: 1px solid #ccc;box-shadow: #ccc 2px 2px 3px;}
+.ct-list:hover{background: #ccc;}
+.img-responsive{max-height: 90px;border-radius: 8px;}
+.ct-list-item{max-width: 250px;overflow: hidden;padding-top: 8px;}
+.discribe{color: #D58512;}
+p{font-size: 10px;padding: 0;margin: 0 0 5px;}
+</style>
+<body>
+	<include file="Public:back"/>
+	<!--餐厅卖家列表-->
+	<div class="container">
+		<volist name="rows" id="row">
+			<div class="ct-list" onclick='window.location="__ROOT__/Canteen/foodlist/id/{$row.id}";'>
+	    		<div class="col-lg-3 col-md-3 col-xs-6 col-sm-6 ct-list-item">
+	    			<!--图片尺寸600*360-->
+	    			<img src="__ROOT__/{$row.image}" class="img-responsive" />
+	    		</div>
+	    		<div class="col-lg-3 col-md-3 col-xs-6 col-sm-6 ct-list-item">
+	    			<h5>{$row.name}</h5>
+	    			<p class="discribe">有啥?:{$row.discrib}</p>
+	    			<p>特色：{$row.features}</p>
+	    		</div>
+	    	</div>
+		</volist> 	
+		<div class="pages">{$page}</div>  	 	
+	</div>   
+<include file="Public:footnav"/>
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+/*全局字体大小*/
+/*所有容器底部边距*/
+.container{height: auto;margin-bottom: 70px;}
+a{font-size: 16px;color: #333;}
+a:link {
+ text-decoration: none;
+}
+a:visited {
+ text-decoration: none;
+}
+a:hover {
+ text-decoration: none;
+}
+a:active {
+ text-decoration: none;
+}
+.head{height: 32px;width: 100%;background: #F7F7F7;}
+/*统一容器边距及大小*/
+.container{padding: 0;margin: 0 2%;width: 96%;}
+/*全局标签栏样式*/
+.Uidoer-label{height: 25px;background:#e7e7e7;border-radius: 1px;margin: 5px auto;}
+.Uidoer-label span{font-size: 14px;line-height: 25px;padding-left: 5px;}
+/*顶部返回模块样式*/
+.back{height:40px;width: 100%;background: #555;}
+.back a i{margin:0;padding-left:15px;font-size: 22px;line-height: 40px;color: #fff;}
+.sub-title,.refresh{font-size: 18px;color: #fff;padding:0 30px;line-height: 40px;}
+/*所有按钮去边框*/
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus{outline: none;
+ }
+/*解决选中蓝色边框和透明*/
+a:focus {outline:none !important;}
+.navbar-brand {padding:0;}
+/*底部导航样式*/
+.container-fluid{margin: 0;padding:0;width: 100%;}
+.container-fluid ul{padding:0;margin:0;width: 100%;}
+.container-fluid ul li{padding:0;margin:0;float: left;width: 25%;height: 55px;border-right: 1px #999 solid;}
+.container-fluid ul li a{margin-top: 0px;text-align: center;}
+@media (max-width:768px){
+.nav>li>a{padding: 5px 0 0 ;}
+.container-fluid ul li a span{margin:0 auto;font-size: 20px;width: 100%;margin-top: 2px;}
+.container-fluid ul li a b{font-size: 12px;height: auto;width:100%;float: left;margin: 0 auto;}
+}
+@media (max-width:768px){
+	.container{margin-bottom: 100px;}
+}
+
+
+/*分页样式*/
+.pages{margin:15px auto;text-align: center;overflow: hidden;}
+.pages a,.pages span {background: #00bc8c;display:inline-block;padding:3px 9px;margin:0 1px;border-radius:3px;color: #fff;font-size: 16px;}
+.pages a,.pages li {display:inline-block;list-style: none;text-decoration:none; color:#fff;}
+.pages a.first,.pages a.prev,.pages a.next,.pages a.end{}
+.page-prev,.page-next{padding:0px !important;margin:0 !important;}
+.pages a:hover{border-color:#50A8E6;}
+.pages span.current{background:#00cfb2;color:#FFF;font-weight:700;border-color:#50A8E6;padding:3px 9px;}

@@ -1,0 +1,36 @@
+<extend name="Main:index"/>
+<block name="right">
+<style type="text/css">
+.tab{color: #31A100;margin-right: 25px;width: 120px;height:35px;display:block;float: left;}
+.info{height: 35px;width: auto;}
+</style>
+<div class="UserPosition">订单详细信息</div>
+ <div class="rightmain">
+	<div class="panel panel-default">
+	<ul class="list-group">
+		<!-- <li class="list-group-item"><span class="tab">ID</span><span class="info">{$data.id}</span></li> -->
+		<li class="list-group-item"><span class="tab">订单编号</span><span class="info">{$data.ordnum}</span></li>
+		<li class="list-group-item"><span class="tab">下单时间</span><span class="info">{$data.addtime|date="Y-m-d H:i:s",###}</span></li>
+		<li class="list-group-item"><span class="tab">送餐时间</span><span class="info">{$data.sendtime|date="Y-m-d H:i:s",###}</span></li>
+		<empty name="data.finishtime">
+		<li class="list-group-item"><span class="tab">完成时间</span><span class="info">未完成</span></li>
+		<else/>
+		<li class="list-group-item"><span class="tab">完成时间</span><span class="info">{$data.finishtime|date="Y-m-d H:i:s",###}</span></li>
+		</empty>
+		<li class="list-group-item"><span class="tab">订单状态</span><span class="info">{$data.status|getorderstatus}</span></li>
+		<li class="list-group-item"><span class="tab">商家名称</span><span class="info">{$data.merchantsname}</span></li>
+		<li class="list-group-item"><span class="tab">商品名</span><span class="info">{$data.proname}</span></li>
+		<li class="list-group-item"><span class="tab">付款总额</span><span class="info">{$data.paymoney}</span></li>
+		<li class="list-group-item"><span class="tab">商品价格</span><span class="info">{$data.price}</span></li>
+		<li class="list-group-item"><span class="tab">派送费</span><span class="info">{$data.sendprice}</span></li>
+		<li class="list-group-item"><span class="tab">是否加急</span><span class="info">{$data.quiksend|getquiksend}</span></li>
+		<li class="list-group-item"><span class="tab">附加费用</span><span class="info">{$data.additional}</span></li>
+		<li class="list-group-item"><span class="tab">备注信息</span><span class="info">{$data.note|default='无'}</span></li>
+		<li class="list-group-item"><span class="tab">用户姓名</span><span class="info"><a href="__MODULE__/User/userinfo/id/{$data.orderid}">{$data.username}</a></span></li>
+		<li class="list-group-item"><span class="tab">用户地址</span><span class="info">{$data.dormitory|default='无'}</span></li>
+		<li class="list-group-item"><span class="tab">用户电话</span><span class="info">{$data.mobile|default='无'}</span></li>
+		<li class="list-group-item"><span class="tab">派送ID</span><span class="info"><a href="__MODULE__/User/userinfo/id/{$data.sendid}">查看派送方信息</span></li>
+		
+	</ul>
+	</div>
+</block>

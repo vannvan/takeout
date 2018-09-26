@@ -1,0 +1,98 @@
+<extend name="Main:index"/>
+<block name="right">
+<load href="__JS__/check.js" />
+<div class="UserPosition">系统回收站</div>
+ <div class="rightmain">
+ <div class="col-lg-12">
+ 	<div class="row">
+ 		<div class="col-lg-4" style="padding-left:0;">
+ 			<div class="panel panel-warning">
+	          <div class="panel-heading">banner回收</div>
+	           <ul class="list-group">
+	            <li class="list-group-item" style="padding-left:10px;"><b>回收总数：</b>{$count.banner|default=0}&ensp;条</li>
+	            <li class="list-group-item" style="padding-left:10px;"><a href="__URL__/banner" class="btn btn-success">查看全部</a></li>
+	           </ul>
+	        </div>
+ 		</div>
+
+ 		<div class="col-lg-4" style="padding-left:0;">
+ 			<div class="panel panel-success">
+	          <div class="panel-heading">店铺回收</div>
+	           <ul class="list-group">
+	            <li class="list-group-item" style="padding-left:10px;"><b>回收总数：</b>{$count.merchants|default=0}&ensp;条</li>
+	            <li class="list-group-item" style="padding-left:10px;"><a href="__URL__/merchants" class="btn btn-success">查看全部</a></li>
+	           </ul>
+	        </div>
+ 		</div>
+
+ 		<div class="col-lg-4" style="padding-left:0;">
+ 			<div class="panel panel-danger">
+	          <div class="panel-heading">商品回收</div>
+	           <ul class="list-group">
+	            <li class="list-group-item" style="padding-left:10px;"><b>回收总数：</b>{$count.product|default=0}&ensp;条</li>
+	            <li class="list-group-item" style="padding-left:10px;"><a href="__URL__/product" class="btn btn-success">查看全部</a></li>
+	           </ul>
+	        </div>
+ 		</div>
+
+ 		<div class="col-lg-4" style="padding-left:0;">
+ 			<div class="panel panel-info">
+	          <div class="panel-heading">反馈回收</div>
+	           <ul class="list-group">
+	           <li class="list-group-item" style="padding-left:10px;"><b>回收总数：</b>{$count.feedback|default=0}&ensp;条</li>
+	            <li class="list-group-item" style="padding-left:10px;"><a href="__URL__/feedback" class="btn btn-success">查看全部</a></li>
+	           </ul>
+	        </div>
+ 		</div>
+
+ 		<!-- <div class="col-lg-4" style="padding-left:0;">
+ 			<div class="panel panel-info">
+	          <div class="panel-heading">用户回收</div>
+	           <ul class="list-group">
+	            <li class="list-group-item" style="padding-left:10px;"><b>回收总数：</b>{$count.userinfo|default=0}&ensp;条</li>
+	            <li class="list-group-item" style="padding-left:10px;"><a href="__URL__/userinfo" class="btn btn-success">查看全部</a></li>
+	           </ul>
+	        </div>
+ 		</div> -->
+
+ 		<div class="col-lg-4" style="padding-left:0;">
+ 			<div class="panel panel-success">
+	          <div class="panel-heading">通知回收</div>
+	           <ul class="list-group">
+	            <li class="list-group-item" style="padding-left:10px;"><b>回收总数：</b>{$count.notice|default=0}&ensp;条</li>
+	            <li class="list-group-item" style="padding-left:10px;"><a href="__URL__/notice" class="btn btn-success">查看全部</a></li>
+	           </ul>
+	        </div>
+ 		</div>
+
+ 		<div class="col-lg-4" style="padding-left:0;">
+ 			<div class="panel panel-success">
+	          <div class="panel-heading">系统帮助回收</div>
+	           <ul class="list-group">
+	            <li class="list-group-item" style="padding-left:10px;"><b>回收总数：</b>{$count.help|default=0}&ensp;条</li>
+	            <li class="list-group-item" style="padding-left:10px;"><a href="__URL__/help" class="btn btn-success">查看全部</a></li>
+	           </ul>
+	        </div>
+ 		</div>
+
+ 		<div class="col-lg-4" style="padding-left:0;">
+ 			<div class="panel panel-success">
+	          <div class="panel-heading">信息回收</div>
+	           <ul class="list-group">
+	            <li class="list-group-item" style="padding-left:10px;"><b>回收总数：</b>{$count.message|default=0}&ensp;条</li>
+	            <li class="list-group-item" style="padding-left:10px;"><a href="__URL__/message" class="btn btn-success">查看全部</a></li>
+	           </ul>
+	        </div>
+ 		</div>
+ 	</div>
+ </div>
+  </div>
+ </div>
+ <div class="pages">{$page}</div>
+ <script type="text/javascript">
+  var scope={
+    'deleteurl':'__URL__/del',
+  }
+</script>
+<load file="__JS__/de_dis_en.js"/>
+</block>

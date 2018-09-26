@@ -1,0 +1,28 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>后台管理系统</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <link rel="stylesheet" href="__PUBLIC__/bs/css/bootstrap.min.css">
+  <script type="text/javascript" src="__PUBLIC__/bs/js/jquery.min.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/bs/js/bootstrap.min.js"></script>
+  <load href="__PUBLIC__/js/layer/layer.js" />
+  <load href="__JS__/dialog.js"/>
+  <load href="__JS__/check.js" />
+  <link rel="stylesheet" href="__CSS__/common.css">
+  <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_449328_89pvzq1luiyhkt9.css" />
+</head>
+<body>
+  <div class="container">
+  <div class="head">
+  	<b>有爱Doer后台管理系统</b>
+    <a href="#" class="AdminName pull-right">{$_SESSION['Admin']['sysname']}</a>
+  </div>
+     <div class="operation_user clearfix">
+        <div class="link" style="float:left"><a href="__ROOT__">&lt;&lt;网站前台</a></div>
+        <div class="link" style="float:right">
+            <a href="__MODULE__/main/" class="icon icon_i">首页</a><span></span><a href="javascript:history.go(1);" class="icon icon_j">前进</a><span></span><a href="javascript:history.go(-1);" class="icon icon_t">后退</a><span></span><a href="#" class="icon icon_n" a="javascript:void(0)" onclick="location.reload()">刷新</a><span></span><a href="logout" class="icon icon_e">退出</a>
+        </div>
+    </div>

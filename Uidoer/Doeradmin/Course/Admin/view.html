@@ -1,0 +1,65 @@
+<extend name="Main:index"/>
+<block name="right">
+<div class="UserPosition">管理员信息</div>
+ <div class="rightmain">
+ <a href="__URL__/add" class="btn btn-success">添加管理员+</a>
+	<table class="table table-striped table-hover ">
+	  <thead>
+	    <tr>
+	      <th>编号</th>
+	      <th>昵称</th>
+	      <th>电话</th>
+	      <th>最近一次登录</th>
+	      <th>登录次数</th>
+	      <th>级别</th>
+	      <th>禁用</th>
+	      <th>操作</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  <volist name='rows' id='row'>
+	    <tr>
+	      <td>{$row.sysid}</td>
+	      <td width="230"><a href="__URL__/viewdemand/id/{$row.id}">{$row.sysname}</a></td>
+	      <td>{$row.tel}</td>
+	      <!-- <td width="120"><span class="intro">{$row.intro}</span></td> -->
+		  <if condition="$row.lastlog eq 0">
+		  <td>没有登录记录</td>
+		  <else/>
+		  <td>{$row.lastlog|date='Y/m/d H:i:s',###}</td>
+		  </if>
+	      <td>{$row.logtime}</td>
+	      <if condition="$row.class eq 0">
+	      <td>普通管理员</td>
+	      <else/>
+	      <td>超级管理员</td>
+	      </if>
+	      <if condition="$row.status eq 0">
+	      <td><a href="__URL__/enabled/id/{$row.sysid}"  style="color:#DF1802"><i class="fa fa-eye-slash"></i></a></td>
+	      <else/>
+	      <td><a href="__URL__/disable/id/{$row.sysid}"  style="color:#6CC302"><i class="fa fa-eye"></i></a></td>
+	      </if>
+	      <td>
+	      <a href="__URL__/mod/id/{$row.sysid}"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="bottom" title="编辑"></i></a>
+	      <a href="__URL__/deladmin/id/{$row.sysid}" onclick='return del();'><i class="fa fa-trash delete" data-toggle="tooltip" data-placement="bottom" data-id={$row.id} title="删除"></i></a>
+	      </td>
+	      </td>
+	    </tr>
+	  </volist>
+	  </tbody>
+	</table>
+  </div>
+ </div>
+ <script>
+function del()
+{
+  if(dialog.confirm('你确认要删除吗','__URL__/deladmin/id/{$row['sysid']}'))
+  {
+  	return true;
+}else
+  {
+    return false;
+  }
+}
+</script>
+</block>

@@ -1,0 +1,45 @@
+<include file="Public:header"/>
+<include file="Public:back"/>
+<style type="text/css">
+.btn{width: 100%;margin-top: 10px;}
+</style>
+	<div class="form-group" style="margin:15px 5px auto 5px;">
+    <form action="__MODULE__/Weixinpay1/pre_pay" method="post">
+      <label class="control-label">最低限额每次100元</label>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">$</div>
+          <input type="number" class="form-control" placeholder="请输入充值金额" name="paymoney" step="0.01">
+          <div class="input-group-addon">.00</div>
+        </div>
+        <button class="btn btn-success" type="submit" id="btn">确认充值</button>
+      </div>
+    </form>
+  </div>
+    
+	<div class="panel panel-warning" style="margin:0 5px;">
+      <div class="panel-heading">
+        <h3 class="panel-title">充值用户可享优惠</h3>
+      </div>
+      <div class="panel-body">
+        <p>1:每月三次免派送费;</p>
+      	<p>2:优惠活动优先通知;</p>
+      	<p>3:有机会获得一个月免派送费的幸运名额。</p>
+      </div>
+    </div>
+<script type="text/javascript">
+  $("#btn").click(function(){
+    var money=$("input[name='paymoney']").val();
+    if(money==''||money==null||money<100){
+      //底部提示
+        layer.open({
+          content: '请输入有效金额'
+          ,skin: 'footer'
+          ,time:1
+        });
+    return false;
+    }
+    
+  })
+</script>
+   

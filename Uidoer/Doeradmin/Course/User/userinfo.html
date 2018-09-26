@@ -1,0 +1,47 @@
+<extend name="Main:index"/>
+<block name="right">
+<style type="text/css">
+.tab{color: #31A100;margin-right: 45px;width: 100px;height:20px;line-height: 20px; font-weight: bolder; display:inline-block;}{//行内设置宽度}
+.info{height: 35px;width: auto;}
+.disable{color: #f00;cursor: pointer;}
+.disable:hover{color: #f00;}
+.enable{color: #31A100;cursor: pointer;}
+.enable:hover{color: #31A100;}
+</style>
+<div class="UserPosition">用户详细信息</div>
+ <div class="rightmain">
+	<div class="panel panel-default">
+	<div class="panel-heading">
+	<span style="color:#f00;font-size:18px;">*绝对保密*</span>
+	<if condition="$data.status eq 1">
+	<span class="pull-right disable" id="disabled" data-id="{$data.id}"><a>拉黑用户</a></span>
+	<else/>
+	<span class="pull-right enable" id="enabled" data-id="{$data.id}"><a>恢复用户</a></span>
+	</if>
+	</div
+	<ul class="list-group">
+		<li class="list-group-item"><span class="tab">OpenId</span><span class="info">{$data.openid}</span></li>
+		<li class="list-group-item"><span class="tab">昵称</span><span class="info">{$data.nickname}</span></li>
+		<li class="list-group-item"><span class="tab">性别</span><span class="info">{$data.sex|getsex}</span></li>
+		<li class="list-group-item"><span class="tab">头像</span><span class="info">
+		<img src="{$data.headimgurl}" style="height:50px;"></span>
+		</li>
+		<li class="list-group-item"><span class="tab">绑定食堂</span><span class="info">{$data.resname}</span></li>
+		<li class="list-group-item"><span class="tab">所在宿舍</span><span class="info">{$data.dormitory}</span></li>
+		<li class="list-group-item"><span class="tab">支付宝</span><span class="info">{$data.alipay}</span></li>
+		<!-- <li class="list-group-item"><span class="tab">支付密码</span><span class="info">{$data.paypass}</span></li> -->
+		<li class="list-group-item"><span class="tab">是否充值用户</span><span class="info">{$data.category|getusercate}</span></li>
+		<li class="list-group-item"><span class="tab">消费金额</span><span class="info">{$data.spend|default="0"}</span></li>
+		<li class="list-group-item"><span class="tab">当前余额</span><span class="info">{$data.remain|default="0"}</span></li>
+	</ul>
+	</div>
+  </div>
+ </div>
+<script type="text/javascript">
+  var scope={
+    'enableurl':'__URL__/enabled',
+    'disableurl':'__URL__/disable',
+  }
+</script>
+<load file="__JS__/de_dis_en.js"/>
+</block>

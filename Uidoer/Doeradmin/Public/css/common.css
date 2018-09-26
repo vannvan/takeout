@@ -1,0 +1,48 @@
+  *{font-family: "微软雅黑";margin:0;padding:0;outline: none;}
+.btn:focus,.btn:active:focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn.active.focus{outline: none;          }
+a:focus {outline:none !important;color: #f90 !important;}
+.navbar-brand{font-size: 20px;}
+a:hover{text-decoration: none !important;}
+/*整体框架*/
+.container{width: 100%;margin: 0;padding: 0;}
+/*公共头部*/
+.head{min-height: 50px;width: 100%;,margin: 0;padding: 0;background: #101010;}
+.head b{color: #fff;font-size: 20px;margin-left: 20px;line-height: 50px;}
+.link span{font-family: "宋体"; font-weight: 500; padding: 0 10px;}
+.link a{color: #000;}
+/*当前位置*/
+.UserPosition{font-size: 15px;padding-left: 15px;line-height: 35px;border-radius: 4px;height: 35px;width: 100%;background: #ccc;margin-bottom: 10px;}
+.AdminName{margin-right: 20px;font-size: 18px;font-weight: bold;	color: #ccc;line-height: 50px;height: 35px;}  
+/*菜单部分样式begin*/
+.menu{margin-top: 5px;padding-left: 0;margin-left: 0;}
+.logo{height: 150px;margin: 0 auto;} 	
+.col-lg-2{border-radius: 4px 5px 0 0;margin-left: 0;background: #000;min-height: 820px;}
+.list-group {margin-bottom: 10px;}
+.list-group-item{padding-left: 60px;}
+.list-group-item:first-child{border-radius: 3px;}
+.breadcrumb{position: relative;right: 0;margin-bottom: 0;background: #ccc;margin-top:0;}
+.operation_user{font:12px/2.5 "微软雅黑";padding: 0 10px; background-color: rgb(225, 224, 224);}
+.glyphicon{font-size: 14px;}
+.glyphicon-chevron-right{color: rgb(233, 35, 101);font-size: 10px;}
+/*菜单部分样式end*/
+/*所有表格文字垂直居中*/
+.table>tbody>tr>td{vertical-align:middle;}
+/*分页样式*/
+.pages a,.pages span {display:inline-block;padding:3px 9px;margin:0 1px;border:1px solid #f0f0f0;border-radius:3px;}
+.pages a,.pages li {display:inline-block;list-style: none;text-decoration:none; color:#58A0D3;}
+.pages a.first,.pages a.prev,.pages a.next,.pages a.end{margin:0;}
+.pages a:hover{border-color:#50A8E6;}
+.pages span.current{background:#50A8E6;color:#FFF;font-weight:700;border-color:#50A8E6;}
+/*小图标样式*/
+.fa-eye{color:#008A00;margin-right: 5px;}
+.fa-paper-plane{margin-right: 5px;color: #096;}
+.fa-cloud-upload,.fa-arrow-circle-o-up{color: #35C500;}
+.fa-cloud-download{color: #f00;}
+.fa-trash,.fa-pencil,.fa-thumbs-o-up,.fa-thumbs-up,.fa-envelope-open{color: #000;margin-left: 5px;}
+.fa-cloud-upload,.fa-cloud-download,.fa-trash,.fa-pencil,.reback{cursor: pointer;}
+/*发布状态字体颜色*/
+.statusred{color: #f00;}
+.statusgreen{color: #00991C;}
+/*浏览，购买次数字体颜色*/
+.viewtime{color: #f00;}
+.baytime{color:#4cae4c;}

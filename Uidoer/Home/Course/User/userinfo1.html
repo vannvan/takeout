@@ -1,0 +1,38 @@
+<include file="Public:header"/>
+<style type="text/css">
+.container{width: 100%;margin: 0;padding: 0;}
+.list-group{border-radius: 0;}
+.list-group-item{width: 100%;height: auto;float: left;}
+.list-group-item:first-child{border-radius: 0;padding: 0;}
+.port{width: 80px;height:100%;background: #008000;}
+.port img{height: 70px;width: 70px;margin: 5px;float: left;}
+.name-sex{width: 120px;height: 100%;float: left;margin-top: 20px;margin-left: 20px;}
+</style>
+<body>
+<include file="Public:back"/>
+<div class="container">
+	<div class="list-group">
+	 <li class="list-group-item">
+	 	<div class="port"><img src="{$data['headimgurl']}" / style="height: 70px;width: 70px;"></div>
+	 	<div class="name-sex">
+	 		{$data.dormitory}的{$data.sex|getsex}
+			<p><b>{$data['nickname']}</b>
+	 	</div>
+	 </li>
+	 <li class="list-group-item">
+	 	<b>餐厅：{$data.resname}</b>
+	 </li>
+	 <li class="list-group-item">
+	 	<b>宿舍：{$data.dormitory}</b>
+	 </li>
+	 <li class="list-group-item">
+	 	<b>爱称：{$data.name}</b>
+	 </li>
+	 <li class="list-group-item">
+	 	<b>TEl：{$data.mobile}</b>
+	 </li>
+	 <li class="list-group-item">
+	 	<b>支付宝：{$data.alipay}</b>
+	 </li>
+	</div>
+</div>

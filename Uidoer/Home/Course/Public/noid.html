@@ -1,0 +1,22 @@
+<!-- 该页面用于用户还未绑定餐厅时使用 -->
+<include file="Public:header"/>
+<body>
+<script type="text/javascript">
+layer.open({
+    content: '您的信息不存在，要去绑定餐厅信息吗？'
+    ,btn: ['朕要去', '不要']
+    ,yes: function(index){
+      window.location.href='__ROOT__/User/setinfo';
+      //location.reload();
+      layer.close(index);
+    }
+  });
+</script>
+	<include file="Public:back"/>
+	<div class="containner">
+		<div style="width:50%;margin:100px auto auto;text-align:center;">
+			<img src="__IMG__/尴尬.jpg"/>
+		</div>
+		<h3 style="font-weight:bolder;text-align:center">你还没有绑定餐厅</h3>
+	</div>
+<include file="Public:footnav"/>

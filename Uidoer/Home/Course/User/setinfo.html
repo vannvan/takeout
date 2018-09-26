@@ -1,0 +1,78 @@
+<include file="Public:header"/>
+<style type="text/css">
+.lb{width: 20%;float: left;}
+.input-in{width: 80%;}
+</style>
+<body>
+<include file="Public:back"/>
+<div class="container">
+	<div class="setinfo-form">
+		<form class="form-horizontal" style="margin-top: 10px;" id="userinfo">
+		  <fieldset>
+		    <div class="form-group">
+		    	<div class="col-xs-10 col-xs-offset-1">
+		    		<input type="text" class="form-control" id="name" placeholder="真实姓名" name="name">
+		    	</div>
+		    </div>
+		    <div class="form-group">
+		      <div class="col-xs-10 col-xs-offset-1">
+		        <input type="text" class="form-control" id="addrese" placeholder="宿舍号(如:北七515)" name="dormitory">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		    	<div class="col-xs-10 col-xs-offset-1">
+		        <select class="form-control" id="restaurant" name="resid">
+		          <option value="">选择餐厅</option>
+		          <option value="1">餐饮中心</option>
+		          <option value="2">东五食堂</option>
+		          <option value="3">东四食堂</option>
+		          <option value="4">西三食堂</option>
+		          <option value="5">西二食堂</option>
+		        </select>
+		    	</div>
+		    </div>
+		    <div class="form-group">
+		      <div class="col-xs-10 col-xs-offset-1">
+		        <input type="text" class="form-control" id="alipay" placeholder="支付宝账号(提现账户)" name="alipay">
+		      </div>
+		    </div>
+		    <div class="form-group col-xs-offset-1">
+		      <div class="col-xs-10 col-xs-offset-1">
+		        <input type="password" class="form-control" id="password" placeholder="支付密码(本平台支付密码)" name="paypass">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <div class="col-xs-10 col-xs-offset-1">
+		        <input type="password" class="form-control" id="repassword" placeholder="重复密码" name="repaypass">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <div class="col-xs-10 col-xs-offset-1">
+		        <input type="text" class="form-control" id="mobile" placeholder="常用手机号" name="mobile">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <div class="col-xs-5 col-xs-offset-1">
+		        <input type="text" class="form-control" id="code" placeholder="请输入验证码" name="code">
+		      </div>
+		      <div class="col-xs-4">
+		      	<button class="btn btn-warning" id="Getcode">获取验证码</button>
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <div class="col-xs-10 col-xs-offset-1">
+		        <button type="button" class="btn btn-success" style="width: 100%;" id="reg">确认提交信息</button>
+		      </div>
+		    </div>
+		  </fieldset>
+		  </form>
+   </div>
+</div>
+<script type="text/javascript">
+	var Sendcode="__ROOT__/Sendcode/Getcode";
+	var register="__URL__/register";
+	var back="__URL__/index";
+</script>
+<load file="__JS__/setinfo.js"/>
+</body>
+</html>

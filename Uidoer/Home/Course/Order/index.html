@@ -1,0 +1,91 @@
+<include file="Public:header"/>
+<load href="__JS__/layer_mobile/layer.js" />
+<load href="__CSS__/order.css"/>
+<script type="text/javascript">  
+    $(document).ready(function() {  
+        $(".order-sort a").click(function() {  
+            $(this).addClass("active").siblings().removeClass("active");  
+        });  
+    });
+</script>  
+<body>
+<include file="Public:back"/>
+<div class="container">
+	<div class="order-sort">
+		<a href="__URL__/?addtime=0">今日订单</a>
+		<a href="__URL__/?addtime=1">历史订单</a>
+	</div>
+<div>
+	<div>
+	  {//用户没有数据时显示}
+			<empty name="rows">
+				<div class="alert alert-dismissible alert-warning" style="margin-top:10px;">
+				  <p>订单是空的，去<a href="__MODULE__/Canteen/mycanteen"><b>我的餐厅</b></a>看看吧！</p>
+				</div>
+			</empty>
+	  <volist name="rows" id="row">
+		<div class="order-info">
+			<div class="order-info-title">
+				<b style="line-height: 35px;margin-left: 15px;">订单号：</b>
+				<span>{$row.ordnum}</span>
+			</div>
+			<div class="order-info-body">
+				<div class="order-info-basic" onclick='window.location="__URL__/details/id/{$row.id}"'>
+					<!-- <img src="__IMG__/mian.png"> -->
+					<p class="glyphicon glyphicon-chevron-right pull-right" style="line-height: 60px;margin-right: 20px;"></p>
+					<p class="order-info-basic-name">{$row.proname}</p>
+				</div><!--订单基本信息-->
+				<div class="order-operation">
+					<div class="order-state-money">
+						<div class="order-state">
+							<b>订单状态：</b>
+							<span style="color: #f00;">{$row.status|getOrderStatus}</span>
+						</div>
+						<div class="order-monay">
+							<b>实付金额：</b>
+							<span>{$row.paymoney|format}</span>
+						</div>
+					</div><!--状态和支付金额-->
+					<div class="Confirm-cancel">{//根据订单状态输出不同操作}
+						<switch name="row.status">
+							<case value="0">
+							<!-- 这里的删除是彻底删除 -->
+								<button class="btn btn-danger order-delete" data-id="{$row.id}" data-status="{$row.status}">删除订单</button>
+								<!-- <button class="btn btn-primary order-btn" onclick='window.location="__ROOT__/Weixinpay/pay/?out_trade_no={$row.ordnum}"'>立即付款</button> -->
+								<button class="btn btn-primary order-btn" onclick='window.location="__ROOT__/Order/re_pay/id/{$row.id}"'>立即付款</button>
+							</case>
+							<case value="1">
+								<button class="btn btn-warning order-btn order-cancel" data-id="{$row.id}">取消订单</button>
+							</case>
+							<case value="2">
+								<button class="btn btn-success order-btn order-ok" data-id="{$row.id}">确认订单</button>
+							</case>
+							<case value="3">
+								<button class="btn btn-danger order-btn order-del" data-id="{$row.id}">删除订单</button>
+							</case>
+							<case value="-1">
+								<button class="btn btn-success order-btn order-rebay" data-id="{$row.id}">重新购买</button>
+							</case>			
+						</switch>
+
+						<!-- <button class="btn btn-warning cancel" style="margin-left: 10px;" data-status="{$row.status}" id="btn">取消订单</button>当订单状态为正在派送时设置为disabled
+						<button class="btn btn-success order-ok" data-id="{$row.id}" data-status="{$row.status}">订单确认</button> -->
+					</div>
+				</div>
+			</div>
+		</div><!--order-info end-->
+	  </volist>
+	  <div class="pages">{$page}</div>  	 	
+	</div>
+</div><!--container end-->
+<script type="text/javascript">
+	var scope={
+	'orderdelete':'__URL__/orderdelete',
+    'orderok':'__URL__/orderok',
+    'ordercancel':'__URL__/ordercancel',
+    'orderdel':'__URL__/orderdel',
+    'ordrebay':'__URL__/ordrebay'
+  }
+</script>
+<load file="__JS__/order.js"/>
+<include file="Public:footnav"/>

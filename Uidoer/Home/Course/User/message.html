@@ -1,0 +1,28 @@
+<include file="Public:header"/>
+<style>
+.container{width: 100%;margin: 0;padding: 0;margin-bottom: 20px;}
+.message-box{height: 70px;border-bottom: 1px #ccc solid;cursor: pointer;}
+.message-box:hover{background: #ccc;}
+.message-title{width: 100%;height:auto;float: left;padding: 10px 0;}
+.message-title p{margin: 0; padding-left:10px; font-weight: bolder;width: 80%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;float: left;}
+.time{width: 20%;padding-left: 20px;}
+.message-content{font-size: 12px; padding-left: 10px; height: 30px;width: 90%;margin: 0;float: left;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+</style>
+<body>
+<include file="Public:back"/>
+<div class="container"><b>{$nomessage}</b>
+	<volist id="row" name="rows">
+	<div class="message-box" onclick='window.location="__URL__/messinfo/id/{$row.id}"'>
+		  	  <div class="message-title">
+		  		<p>
+		  		<if condition="$row.status eq 0">
+			  	<span class="badge" style="color: #fff;background: #EB3C00;">未读</span>
+			  	<else/>
+			  	</if>
+			  	{$row.title}</p>
+			  	<b class="time">{$row.addtime|date="m-d",###}</b>
+			  </div>
+			  <div class="message-content">{$row.content}</div>	
+	</div>
+	</volist>
+</div>

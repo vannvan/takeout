@@ -1,0 +1,41 @@
+<extend name="Main:index"/>
+<block name="right">
+<div class="UserPosition">Banner回收</div>
+<div class="rightmain">
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>描述</th>
+      <th>图片</th>
+      <th>链接</th>
+      <th>添加日期</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<volist name='rows' id='row'>
+    <tr>
+      <td>{$row.id}</td>
+      <td>{$row.discrib}</td>
+      <td style="height:60px"><img src="__ROOT__/{$row.image}" class="img-responsive" style="height: 60px;"></td>
+      <td>{$row.href}</td>
+      <td>{$row.addtime|date='Y-m-d',###}</td>
+      <td>
+        <span><a><i class="fa fa-arrow-circle-o-up reback" data-toggle="tooltip" data-placement="bottom" data-id={$row.id} title="恢复"></i></a></span>
+        <span><a><i class="fa fa-trash delete" data-toggle="tooltip" data-placement="bottom" data-id={$row.id} title="彻底删除"></i></a></span>
+      </td>
+    </tr>
+   </volist>
+    
+  </tbody>
+</table>
+<div class="pages">{$page}</div>
+<script type="text/javascript">
+  var scope={
+    'reback':'__URL__/Breback',
+    'delete':'__URL__/Bdel',
+  }
+</script>
+<load file="__JS__/reback_del.js"/>
+</block>

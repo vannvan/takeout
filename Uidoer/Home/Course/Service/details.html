@@ -1,0 +1,35 @@
+<include file="Public:header"/>
+<style>
+.panel{border: none;}
+.panel-body{border: none;box-shadow: #ccc 2px 2px 3px;border-left: 1px solid #ccc;}
+</style>
+<body>
+<include file="Public:back"/>
+<div class="container">
+	<div class="panel panel-primary" style="margin-top: 10px;">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">订单详情</h3>
+		  </div>
+		  <div class="panel-body">
+		    <p class="order-lb">订单编号：<b>{$data.ordnum}</b></p>
+		    <p class="order-lb">订餐时间：<b>{$data.addtime|date="Y-m-d H:i:s",###}</b></p>
+		    <p class="order-lb">餐厅名称：<b>{$data.resname}</b></p>
+		    <p class="order-lb">商户名称：<b>{$data.merchantsname}</b></p>
+		    <p class="order-lb">商品名称：<b>{$data.proname}</b></p>
+		    <p class="order-lb">商品价格：<b>&yen;{$data.price|format}</b></p>
+		    <p class="order-lb">派送费用：<b>&yen;{$data.sendprice|format}</b></p>
+		    <p class="order-lb">是否加钱速达：<b>{$data.quiksend|getquiksend}</b></p>
+		    <p class="order-lb">附加类目价格：<b>&yen;{$data.additional|format}</b></p> 
+		    <p class="order-lb">备注信息：<span style="color: #f00;">{$data.note|getnote}</span></p>
+		    <p class="order-lb">实需金额：<b><span style="color: #f00;">&yen;{$data.paymoney|format}</span></b></p>
+		    <p class="order-lb">送餐宿舍：<b style="color: #f00;">{$data.dormitory}</b></p>
+		    <if condition="$data.status neq 2">
+				  <p style="text-align:center;color:#f50020"><u>***订餐者信息在确认派送后方可显示***</u></p>
+		    <else/>
+		    <p class="order-lb">用户姓名：<b style="color: #f00;">{$data.username}</b></p>
+		    <p class="order-lb">联系方式：<b style="color: #f00;">{$data.mobile}</b></p><!--后面用户姓名及联系方式均在派送人参与派送后才能显示-->
+		    </if>
+		  </div>
+		</div>	
+</div>
+<include file="Public:footnav"/>

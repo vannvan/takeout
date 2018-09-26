@@ -1,0 +1,45 @@
+<include file="Public:header"/>
+<style>
+.panel{border: none;}
+.panel-body{border: none;box-shadow: #ccc 2px 2px 3px;border-left: 1px solid #ccc;}
+</style>
+<body>
+<include file="Public:back"/>
+<div class="container">
+	<div class="panel panel-primary" style="margin-top: 10px;">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">订单详情</h3>
+		  </div>
+		  <div class="panel-body">
+		    <p class="order-lb">订单编号：<b>{$data.ordnum}</b></p>
+		    <p class="order-lb">订餐时间：<b>{$data.addtime|date="Y-m-d H:i:s",###}</b></p>
+		    <empty name="data.paytime">
+				<p class="order-lb">付款时间：<b style="color:#f00">待付款</b></p>
+				<else /> 
+				<p class="order-lb">付款时间：<b>{$data.paytime|date="Y-m-d H:i:s",###}</b></p>
+			</empty>
+		    <p class="order-lb">商户名称：<b>{$data.merchantsname}</b></p>
+		    <p class="order-lb">商品名称：<b>{$data.proname}</b></p>
+		    <p class="order-lb">商品价格：<b>&yen;{$data.price|format}</b></p>
+		    <p class="order-lb">派送费用：<b>&yen;{$data.sendprice|format}</b></p>
+		    <p class="order-lb">加钱速达：<b>{$data.quiksend|getquiksend}</b></p>
+		    <p class="order-lb">附加价格：<b>&yen;{$data.additional|format}</b></p> 
+		    <p class="order-lb">备注信息：{$data.note|getnote}</p>
+		    <p class="order-lb">实付金额：<b>&yen;{$data.paymoney|format}</b></p>
+		    <p class="order-lb">支付方式：<b>{$data.paymethod}</b></p>
+		    <p class="order-lb">送餐宿舍：<b style="color: #f00;">{$data.dormitory}</b></p>
+			<empty name="data.sendid">
+			<else/>
+			   <p class="order-lb">派送人姓名：<b style="color: #f00;">{$data.SendUserName}</b></p>
+		       <p class="order-lb">联系电话：<span class="glyphicon glyphicon-earphone" aria-hidden="true" style="color:#ff4351"></span> <a><b style="color: #f00;">{$data.SendUserMobile}</b></a></p>
+		    <hr/>
+			</empty>
+		    <if condition="$data.finishtime eq null">
+		    	<p class="order-lb">完成时间：<b>待确认或待送达</b></p><!--当订单完成后显示该列-->
+		    <else/>
+		    	<p class="order-lb">完成时间：{$data.finishtime|date="Y-m-d H:i:s",###}<b></b></p><!--当订单完成后显示该列-->
+		    </if>
+		  </div>
+		</div>	
+</div>
+<include file="Public:footnav"/>

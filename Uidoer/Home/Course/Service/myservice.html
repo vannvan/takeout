@@ -1,0 +1,56 @@
+<include file="Public:header"/>
+<load file="__CSS__/service.css"/>
+<load href="__JS__/layer_mobile/layer.js" />
+<load href="__JS__/alert.js"/>
+<body>
+<include file="Public:back"/>
+<div class="container">
+	<!--推荐内容，有当前用户所在宿舍在订单数据库查询其对应宿舍楼前5条作为推荐-->
+	<div class="recommended">
+		<div class="sercice-title">
+			<b><a href="__URL__/myservice">推荐派送</a></b>
+			<!-- <b><a href="__URL__/myservice">我的派送</a></b> -->
+			<div class="dropdown pull-right">
+			  <button class="dropbtn"><b>全部餐厅<span class="glyphicon glyphicon-menu-hamburger"></span></b></button>
+			  <div class="dropdown-content">
+			    <volist name="resrows" id="resrow">
+			   	  <a href="__URL__/myservice/?resid={$resrow.id}">{$resrow.name}</a>
+			   </volist>
+			  </div>
+			</div>
+		</div>
+			{//当所在餐厅没有数据时显示}
+			<empty name="rows">
+				<div class="alert alert-dismissible alert-warning" style="margin-top:10px;">
+				  <p>当前餐厅没有订单！去其他餐厅看看吧！</p>
+				</div>
+			</empty>
+			<volist name="rows" id="row">
+			<div class="service-info">
+				<div class="service-info-title">
+					<b style="line-height: 35px;margin-left: 15px;">订单号：</b>
+					<span>{$row.ordnum}</span>
+				</div>
+				<div class="service-info-body">
+					<div class="service-info-basic" onclick='window.location="__URL__/details/id/{$row.id}"'>
+						<div class="service-info-main">
+							<p class="service-info-basic-name">{$row.proname}</p>
+							<p class="service-info-basic-money">金额：<span style="color: #f00;">{$row.paymoney|format}</span></p>
+						</div>
+						<span class="glyphicon glyphicon-chevron-right pull-right" style="margin-right: 20px;line-height: 60px;"></span>
+					</div><!--订单基本信息-->
+					<div class="servise-join">
+						<p class="service-info-basic-address">送餐地址：<span style="color: #f00;">{$row.dormitory}</span></p>
+						<button type="button" class="btn btn-success join-btn pull-right send-btn" data-id={$row.id}>我要派送</button><!--点击派送后-->
+					</div>
+				</div>
+			</div><!--service-info end-->
+		</volist>
+	  <div class="pages">{$page}</div>  	 	
+	</div>
+</div>
+<script type="text/javascript">
+	var sendurl="__URL__/send";
+</script>
+<load file="__JS__/send.js"/>
+<include file="Public:footnav"/>

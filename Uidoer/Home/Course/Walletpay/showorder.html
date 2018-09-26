@@ -1,0 +1,53 @@
+<include file="Public:header"/>
+<style>
+.panel-primary{border: none;background: #ededed;box-shadow: #ccc 2px 2px 3px;}
+.panel-body{padding: 0px;border: none;}
+.pay-lb{margin: 0; padding:10px 10px; border-bottom: 1px #ccc solid;}
+.pay-lb:last-child{border: none;}
+.pay-lb b{margin-left: 10px;float: right;}
+.pay-lb:first-child b{color: #333;}
+</style>
+<body>
+	<include file="Public:back"/>
+	<div class="container">
+		<div class="panel panel-primary" style="margin-top: 10px;">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">支付成功</h3>
+		  </div>
+		  <div class="panel-body">
+		    <p class="pay-lb">订单编号：<b>{$data.ordnum}</b></p>
+		    <p class="pay-lb">商品名称：<b>{$data.proname}</b></p>
+		    <p class="pay-lb">付款金额：<b>&yen;{$data.paymoney|format}</b></p>
+		    <p class="pay-lb">生成时间：<b>{$data.addtime|date="Y-m-d H:i:s",###}</b></p>
+		    <p class="pay-lb">付款时间：<b>{$data.paytime|date="Y-m-d H:i:s",###}</b></p>
+		    <p class="pay-lb">支付方式：<b>{$data.paymethod}</b></p>
+		    <p class="pay-lb" onclick='window.location.href="__MODULE__/Order/details/id/{$data.id}"'>&nbsp;<b class="view-order" style="color:#2f8c00">查看详细信息</b></p>
+		 </div>
+		</div>
+		<div id="zan" data-id="{$data.id}"><img src="__PUBLIC__/img/点赞.png" class="center-block"></div>	
+	</div>
+<script type="text/javascript">
+	$("#zan").click(function(){
+		var orderid=$(this).attr('data-id');
+		var data={'orderid':orderid};
+		var url="__URL__/zan";
+		$.post(url,data,function(result){
+        if(result.status==1){
+         //成功提示
+          layer.open({
+            content: result.message
+            ,skin: 'msg'
+            ,time:1
+          });
+        }else{
+        //底部提示
+          layer.open({
+            content: result.message
+            ,skin: 'footer'
+            ,time:1
+          });
+        }
+    },"JSON")
+	})
+</script>
+<include file="Public:footnav"/>

@@ -1,0 +1,37 @@
+<extend name="Main:index"/>
+<block name="right">
+<load file="__CSS__/add.css"/>
+<div class="UserPosition">发送信息</div>
+<div class="rightmain">
+	<form class="form-horizontal" action="__URL__/replycreate" method="post" onsubmit="return validateForm()" enctype="multipart/form-data"> 
+	  <fieldset>
+	  <!-- name -->
+	    <div class="form-group col-lg-12">
+	      <label class="lb">标题</label>
+	      <div class="col-lg-6">
+	        <input type="text" class="form-control" placeholder="" required="required"  maxlength="20" name="title">
+	      </div>
+	    </div>  
+
+	   <!-- content -->
+	    <div class="form-group col-lg-12" style="margin-left:-16px;">
+	      <label class="lb">内容</label>
+	      <div class="col-lg-6">
+	        <textarea class="form-control" id="textArea" placeholder="" name="content"></textarea>
+	      </div>
+	    </div>
+	     <!-- 署名	 -->
+	    <div class="form-group col-lg-12">
+	      <label class="lb">签名</label>
+	      <div class="col-lg-6">
+	        <input type="text" class="form-control" placeholder="例：有爱Doer校园外卖售后" required="required"  maxlength="" name="belong">
+	      </div>
+	    </div>    
+	    <div class="col-lg-10 col-lg-offset-1">
+	    <input type="hidden" name="sendid" value="{$userid}">
+        <button type="submit" class="btn btn-warning">确认发送</button>
+        <a href="javascript:history.go(-1);" class="btn btn-primary">返回</a>
+      	</div>
+	    </fieldset>
+	</form>
+</block>

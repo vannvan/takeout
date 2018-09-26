@@ -1,0 +1,59 @@
+<extend name="Main:index"/>
+<block name="right">
+<style>
+.lb{float: left;width: 100px;height: 33px;line-height: 33px;text-align: center;}
+#textArea{height: 90px;resize:none;}
+.btn-warning{background: #DE9102;}
+</style>
+<div class="UserPosition">添加Banner</div>
+<div class="rightmain">
+	<form class="form-horizontal" action="__URL__/create" method="post" onsubmit="return validateForm()" enctype="multipart/form-data"> 
+	  <fieldset>
+	  <!-- title -->
+	    <div class="form-group col-lg-12">
+	      <label class="lb">描述</label>
+	      <div class="col-lg-6">
+	        <input type="text" class="form-control" placeholder="15字以内" required="required"  maxlength="15" name="discrib">
+	      </div>
+	    </div>
+
+	  <!--链接-->
+		<div class="form-group col-lg-12">
+	      <label class="lb">链接</label>
+	      <div class="col-lg-6">
+	        <input type="text" class="form-control" placeholder="全路径" required="required"  maxlength="15" name="href">
+	      </div>
+	    </div>	  
+	  <!-- 主图 -->
+		<div class="form-group col-lg-12">
+		  <label class="lb">图片</label>
+		  <div class="col-lg-6">
+		  	<input type="button" id="btn1" onclick="myfile.click();" class="btn btn-success" value="上传图片">  
+		  	<!-- <button type="buttom" class="btn btn-default" onclick="myfile.click();"><i class="fa fa-picture-o" style="font-size:18px;"></i></button> -->
+			<input type="file" id="myfile" onchange="input1.value=this.value" style="display:none" name="image" required="required"  accept="image/gif,image/jpeg" > 
+			<input type="text" id="input1" class="form-control" style="width:auto;float:left;margin-right:20px;"> 
+		  </div>
+		</div>
+	  <!--当前是否显示-->
+	    <div class="form-group col-lg-12">
+	      <label class="lb">是否显示</label>
+	      <div class="col-lg-6">
+		      <div class="radio">
+	          <label>
+	            <input type="radio" name="status" value="1" checked="">显示
+	          </label>
+	          </div>
+		      <div class="radio">
+		      <label>
+		        <input type="radio" name="status" value="0">不显示
+		      </label>
+		      </div>
+	      </div>
+	    </div>
+	    <div class="col-lg-10 col-lg-offset-1">
+        <button type="submit" class="btn btn-warning">确认添加</button>
+        <a href="javascript:history.go(-1);" class="btn btn-primary">返回</a>
+      	</div>
+	    </fieldset>
+	</form>
+</block>

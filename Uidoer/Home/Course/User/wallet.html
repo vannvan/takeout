@@ -1,0 +1,46 @@
+<include file="Public:header"/>
+<load file="//at.alicdn.com/t/font_449328_zlwahy2i6f0kvs4i.css"/>
+<style type="text/css">
+.container{margin: 0;padding: 0;width: 100%;}
+.panel{margin-top: 10px;margin-bottom: 0;border: none;border-radius: 0;}
+.panel-heading{border-radius: 0;}
+.panel-body{width: 100%;height: auto;padding: 0;}
+.spend,.yue{width: 100%;height:110px;float: left;background: #9cc;}
+.spend{border-bottom: #303030 1px solid;}
+.attribute{margin-top: 5px;margin-left: 5px;}
+.money{font-size: 45px;font-weight: bolder; margin-left: 10px;color: #bd0000;}
+.iconfont{margin-right: 10px;}
+.list-group-item:last-child{border-radius: 0;}
+</style>
+<body>
+<include file="Public:back"/>
+<div class="container">
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">我的钱包</h3>
+	  </div>
+	  <div class="panel-body">
+	    <div class="spend">
+	    	<p class="attribute">支出金额(元)</p>
+	    	<p class="money">&yen;{$data.spend|format}</p>
+	    </div>
+	    <div class="yue">
+	    	<p class="attribute">余额(元)</p>
+	    	<p class="money">&yen;{$data.remain|format}</p>
+	    </div>
+	  </div>
+	</div><!--panel end-->
+	<a href="__URL__/recharge" class="list-group-item" style="border-bottom: none;">
+		<i class="icon iconfont icon-chongzhi" style="color: #DB5800;"></i>
+		充值
+		<span class="glyphicon glyphicon-chevron-right pull-right"></span> 
+	</a>
+	<a href="__URL__/takeout/id/{$data.userid}" class="list-group-item">
+		<i class="icon iconfont icon-tixian" style="color: #007A02;"></i>
+		提现
+		<span class="glyphicon glyphicon-chevron-right pull-right"></span> 
+	</a>
+</div>
+
+
+
